@@ -1,6 +1,6 @@
 # fast-filter
 
-A fully compatible replacement for the native `[].filter` method that performs [10 times faster](http://jsperf.com/fastfilter-vs-native-array-filter) in most environments.
+A replacement for the native `[].filter` method that performs [5-10 times faster](http://jsperf.com/fastfilter-vs-native-array-filter) in most environments.
 
 ## Install
 
