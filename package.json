@@ -1,0 +1,27 @@
+{
+  "name": "fast-filter",
+  "version": "1.0.0",
+  "description": "Array filtering faster than the native array.filter method",
+  "main": "index.js",
+  "scripts": {
+    "test": "jasmine-node --matchall tests/"
+  },
+  "keywords": [
+    "array",
+    "filter",
+    "performance",
+    "fast",
+    "shim",
+    "polyfill"
+  ],
+  "author": "Matt Dunlap <mpdunlap@gmail.com>",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://github.com/prestaul/fast-filter/raw/master/LICENSE"
+    }
+  ],
+  "devDependencies": {
+    "jasmine-node": "^1.14.5"
+  }
+}
