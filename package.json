@@ -21,6 +21,10 @@
       "url": "http://github.com/prestaul/fast-filter/raw/master/LICENSE"
     }
   ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Prestaul/fast-filter.git"
+  },
   "devDependencies": {
     "jasmine-node": "^1.14.5"
   }
