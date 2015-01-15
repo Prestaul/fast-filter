@@ -9,7 +9,7 @@ function fastFilter(array, fn, thisArg) {
 }
 
 fastFilter.install = function(name) {
-	Array.prototype[name || 'filter'] = function(fn, thisArg) {
+	Array.prototype[name || 'fastFilter'] = function(fn, thisArg) {
 		return fastFilter(this, fn, thisArg);
 	};
 
