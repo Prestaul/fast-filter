@@ -1,6 +1,6 @@
 {
   "name": "fast-filter",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Array filtering faster than the native array.filter method",
   "main": "index.js",
   "scripts": {
