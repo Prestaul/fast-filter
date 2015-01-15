@@ -1,3 +1,5 @@
+require('../').install('filter');
+
 var has = Object.prototype.hasOwnProperty;
 var getKeys = function (o) {
     var key, a = [];
@@ -56,8 +58,7 @@ describe('filter', function () {
 
 	beforeEach(function () {
 		testSubject = [2, 3, undefined, true, 'hej', 3, null, false, 0];
-		delete testSubject[1];
-		filteredArray = [2, undefined, 'hej', null, false, 0];
+		filteredArray = [2, 3, undefined, 'hej', null, false, 0];
 	});
 
 	describe('Array object', function () {
@@ -82,21 +83,9 @@ describe('filter', function () {
 			expect(i).toBe(3);
 		});
 
-		it('should skip non-set values', function () {
-			var passedValues = {};
-			testSubject = [1, 2, 3, 4];
-			delete testSubject[1];
-			testSubject.filter(function (o, i) {
-				passedValues[i] = o;
-				return true;
-			});
-			expect(passedValues).toExactlyMatch(testSubject);
-		});
-
 		it('should pass the right context to the filter', function () {
 			var passedValues = {};
 			testSubject = [1, 2, 3, 4];
-			delete testSubject[1];
 			testSubject.filter(function (o, i) {
 				this[i] = o;
 				return true;
@@ -119,14 +108,6 @@ describe('filter', function () {
 			var copy = testSubject.slice();
 			testSubject.filter(callback);
 			expect(testSubject).toExactlyMatch(copy);
-		});
-
-		it('should not be affected by same-index mutation', function () {
-			var results = [1, 2, 3].filter(function (value, index, array) {
-				array[index] = 'a';
-				return true;
-			});
-			expect(results).toEqual([1, 2, 3]);
 		});
 	});
 
@@ -157,18 +138,6 @@ describe('filter', function () {
 			expect(i).toBe(3);
 		});
 
-		it('should skip non-set values', function () {
-			var passedValues = {};
-			testSubject = createArrayLikeFromArray([1, 2, 3, 4]);
-			delete testSubject[1];
-			Array.prototype.filter.call(testSubject, function (o, i) {
-				passedValues[i] = o;
-				return true;
-			});
-			delete testSubject.length;
-			expect(passedValues).toExactlyMatch(testSubject);
-		});
-
 		it('should set the right context when given none', function () {
 			var context;
 			Array.prototype.filter.call(createArrayLikeFromArray([1]), function () {context = this;}, undefined);
@@ -178,7 +147,6 @@ describe('filter', function () {
 		it('should pass the right context to the filter', function () {
 			var passedValues = {};
 			testSubject = createArrayLikeFromArray([1, 2, 3, 4]);
-			delete testSubject[1];
 			Array.prototype.filter.call(testSubject, function (o, i) {
 				this[i] = o;
 				return true;
